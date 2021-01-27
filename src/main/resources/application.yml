@@ -10,11 +10,9 @@ spring:
     password: 'test'
   jpa:
     open-in-view: true
+  profiles:
+    active: dev01
 
 logging:
   level:
-    com.example: debug
-    com.mysql: debug
-    org:
-      springframework.data: debug
-      hibernate: debug
+    org.hibernate.SQL: DEBUG

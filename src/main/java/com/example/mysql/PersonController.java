@@ -49,10 +49,10 @@ public class PersonController {
     }
 
 
-    @GetMapping("/view/{id}")
-    public PersonVO getPersonVO(@PathVariable("id") String id){
-        return repository.findPersonById(id);
-    }
+//    @GetMapping("/view/{id}")
+//    public PersonVO getPersonVO(@PathVariable("id") String id){
+//        return repository.findPersonById(id);
+//    }
 
     @GetMapping("/car/{id}")
     public CarVO getCardView(@PathVariable("id") String personId) {
