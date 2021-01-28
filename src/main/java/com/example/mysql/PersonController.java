@@ -34,6 +34,11 @@ public class PersonController {
         return repository.findByFirstNameStartingWith(firstName);
     }
 
+//    @PutMapping("/firstName/{id}/{name}")
+//    public Boolean updateAge(@PathVariable("id") String id, @PathVariable("name") String name) {
+//        return repository.updateFirstName(id, name);
+//    }
+
     /**
      * @param pageable ?page=0&size=2&sort=id,desc
      * @return Page body
@@ -69,5 +74,22 @@ public class PersonController {
         } else {
             throw new IllegalArgumentException("person not found");
         }
+    }
+
+    @PostMapping("/transaction")
+    public void updateTest(@RequestBody Person person) {
+        transactionTest(person);
+    }
+
+    //    @Transactional
+    public void transactionTest(Person person) {
+        Person save = repository.save(person);
+        try {
+            Thread.sleep(40000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        save.setAge(save.getAge() + 1);
+        repository.save(save);
     }
 }
